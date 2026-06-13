@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Babyyy ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Georgia, serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffc0cb,#ffd6e7);
+    overflow:hidden;
+}
+
+/* Envelope */
+.envelope{
+    width:320px;
+    height:220px;
+    background:#ff8fab;
+    position:relative;
+    border-radius:12px;
+    cursor:pointer;
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.envelope:hover{
+    transform:scale(1.03);
+}
+
+.flap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:0;
+    height:0;
+    border-left:160px solid transparent;
+    border-right:160px solid transparent;
+    border-top:110px solid #ff5d8f;
+}
+
+.open-text{
+    position:absolute;
+    width:100%;
+    text-align:center;
+    top:125px;
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+/* Letter */
+.letter{
+    display:none;
+    width:90%;
+    max-width:750px;
+    background:#fffdf8;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.heart{
+    text-align:center;
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+h1{
+    text-align:center;
+    color:#e63946;
+    margin-bottom:25px;
+}
+
+p{
+    font-size:18px;
+    line-height:1.9;
+    color:#444;
+    margin-bottom:15px;
+}
+
+.signature{
+    text-align:center;
+    margin-top:20px;
+    font-size:22px;
+    color:#e63946;
+}
+
+.buttons{
+    text-align:center;
+    margin-top:25px;
+}
+
+button{
+    border:none;
+    padding:14px 25px;
+    margin:8px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.music-btn{
+    background:#ff6b81;
+    color:white;
+}
+
+.forgive-btn{
+    background:#e63946;
+    color:white;
+}
+
+.floating-heart{
+    position:absolute;
+    font-size:25px;
+    animation:float 7s linear infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Music -->
+<audio id="loveSong" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Envelope -->
+<div class="envelope" id="envelope" onclick="openLetter()">
+    <div class="flap"></div>
+    <div class="open-text">OPEN ❤️</div>
+</div>
+
+<!-- Letter -->
+<div class="letter" id="letter">
+
+    <div class="heart">❤️</div>
+
+    <h1>To My Sweetest Babyyy 💌</h1>
+
+    <p>
+        My dearest sweetheart,
+    </p>
+
+    <p>
+        I know I made mistakes and hurt you, and for that,
+        I am truly sorry. 🥺
+    </p>
+
+    <p>
+        Cutieeee, you mean so much to me. Your smile brightens
+        my darkest days, your voice comforts me, and your love
+        is one of the greatest gifts in my life.
+    </p>
+
+    <p>
+        I never wanted to make you sad. If I could go back and
+        change the moments that hurt you, I would do it without
+        thinking twice.
+    </p>
+
+    <p>
+        Babyyy, I know that saying "sorry" cannot magically fix
+        everything, but I hope you can feel how genuine this apology is.
+    </p>
+
+    <p>
+        Thank you for loving me, supporting me, and staying with me.
+        I promise to learn from my mistakes and become better every day.
+    </p>
+
+    <p>
+        Sending you the biggest hug ever 🤗🤗🤗
+        and all my love. ❤️
+    </p>
+
+    <p>
+        Please forgive me, sweetheart. 🥺❤️
+    </p>
+
+    <div class="signature">
+        Forever Yours,<br>
+        ❤️ Your Idiot 🤗❤️
+    </div>
+
+    <div class="buttons">
+        <button class="music-btn" onclick="playMusic()">
+            🎵 Play Our Song
+        </button>
+
+        <button class="forgive-btn" onclick="showLove()">
+            💕 Forgive Me?
+        </button>
+    </div>
+
+</div>
+
+<script>
+function openLetter(){
+    document.getElementById("envelope").style.display = "none";
+    document.getElementById("letter").style.display = "block";
+}
+
+function playMusic(){
+    document.getElementById("loveSong").play();
+}
+
+function showLove(){
+    alert("Thank you for reading this, Babyyy ❤️🤗 I love you so much 🥺💕");
+}
+
+function createHeart(){
+    let heart = document.createElement("div");
+    heart.classList.add("floating-heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },7000);
+}
+
+setInterval(createHeart,500);
+</script>
+
+</body>
+</html>
